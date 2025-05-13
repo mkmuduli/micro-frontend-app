@@ -13,14 +13,14 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'home',
+      name: 'details',
       filename: 'remoteEntry.js',
-      remotes: {
-        details: 'details@http://localhost:9001/remoteEntry.js',
-      },
-      // exposes: {
-      //   './list': './src/component/list.jsx',
+      // remotes: {
+      //   home: 'home@http://localhost:9000/remoteEntry.js',
       // },
+      exposes: {
+        './Card': './src/component/card.jsx',
+      },
       shared: ['react', 'react-dom'],
     }),
     new EsLintPlugin(),
@@ -34,8 +34,8 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
-    port: 9000,
-    open: true,
+    port: 9001,
+    // open: true,
     historyApiFallback: true,
   },
   module: {
@@ -106,7 +106,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
     },
   },
 };

@@ -1,6 +1,3 @@
-/lib-comp/node_modules
-/lib-comp/dist
+/*/node_modules
+/*/dist
 
-
-/lib/consumer/node_modules
-/lib-consumer/dist
