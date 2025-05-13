@@ -2,6 +2,20 @@
   "name": "lib-comp",
   "version": "0.1.0",
   "type": "module",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./Button": {
+      "import": "./dist/Button/index.js",
+      "require": "./dist/Button/index.js"
+    },
+    "./Card": {
+      "import": "./dist/Card/index.js",
+      "require": "./dist/Card/index.js"
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist"
@@ -11,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.27.1",
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",

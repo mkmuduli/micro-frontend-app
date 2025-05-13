@@ -1,2 +1,6 @@
 /lib-comp/node_modules
 /lib-comp/dist
+
+
+/lib/consumer/node_modules
+/lib-consumer/dist

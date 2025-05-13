@@ -4,6 +4,7 @@ import babel from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import alias from '@rollup/plugin-alias';
 // import { visualizer } from "rollup-plugin-visualizer";
 
 import { dirname } from 'path';
@@ -27,13 +28,19 @@ export default components.map((name) => ({
         react: 'React',
         'react-dom': 'ReactDOM'
       },
-      exports: "named"
+      exports: "named",
+      chunkFileNames: '[name]-[hash].js'
     },
   ],
   external: ["react", "react-dom"],
   plugins: [
     peerDepsExternal({includeDependencies: true}),
-    resolve(),
+    alias({
+      entries: [
+        { find: 'components', replacement: path.resolve(__dirname, 'components') }
+      ]
+    }),
+    resolve(['.js', '.jsx']),
     commonjs(),
     babel({
       babelHelpers: "bundled",
